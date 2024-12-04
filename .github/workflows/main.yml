@@ -44,18 +44,10 @@ jobs:
           docker build -t secure-app .
 
       - name: Push Docker image
-       env:
+        env:
           DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         run: |
           echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
           docker tag secure-app $DOCKER_USER/secure-app:latest
           docker push $DOCKER_USER/secure-app:latest
-
-
-          
-       
-          
-         
-         
-
